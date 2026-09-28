@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101838" />
+  <meta name="description" content="ECR-R 亲密关系体验问卷中文参考版：36 题自动计分、反向计分与依恋焦虑 × 依恋回避四象限结果图。" />
+  <title>ECR-R 亲密关系体验问卷｜中文参考版</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23101838'/%3E%3Cpath d='M13 32h38M32 13v38' stroke='%236be3dc' stroke-width='3' opacity='.7'/%3E%3Ccircle cx='24' cy='22' r='8' fill='%23ff826e' stroke='white' stroke-width='3'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #101838;
+      --ink-soft: #4b5575;
+      --paper: #ffffff;
+      --paper-soft: #f4f6fb;
+      --line: #dfe4f0;
+      --cyan: #42cfc8;
+      --cyan-dark: #0b7e7c;
+      --coral: #ff826e;
+      --blue: #5268e5;
+      --focus: #1e50d5;
+      --shadow: 0 24px 70px rgba(3, 10, 40, .22);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { min-width: 320px; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 9% 4%, rgba(66, 207, 200, .19), transparent 28rem),
+        radial-gradient(circle at 92% 96%, rgba(255, 130, 110, .18), transparent 30rem),
+        #101838;
+      line-height: 1.65;
+    }
+
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      z-index: 30;
+      top: 12px;
+      left: 12px;
+      padding: 10px 14px;
+      color: var(--ink);
+      background: white;
+      border-radius: 10px;
+      transform: translateY(-150%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .topbar {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: white;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      letter-spacing: .02em;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.4);
+      border-radius: 11px;
+      background:
+        linear-gradient(90deg, transparent 47%, rgba(107,227,220,.7) 48% 52%, transparent 53%),
+        linear-gradient(transparent 47%, rgba(107,227,220,.7) 48% 52%, transparent 53%);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      left: 7px;
+      top: 7px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.92);
+    }
+
+    .language-toggle {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 44px;
+      font-size: .875rem;
+      color: rgba(255,255,255,.78);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .language-toggle input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--cyan);
+    }
+
+    main { padding: 22px 20px 54px; }
+
+    .app-shell {
+      width: min(1180px, 100%);
+      min-height: 690px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, .78fr) minmax(500px, 1.48fr);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .context-panel {
+      position: relative;
+      padding: clamp(34px, 5vw, 64px);
+      color: white;
+      background:
+        linear-gradient(rgba(82,104,229,.15) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(82,104,229,.15) 1px, transparent 1px),
+        #18224b;
+      background-size: 42px 42px;
+      overflow: hidden;
+    }
+
+    .context-panel::before,
+    .context-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .context-panel::before {
+      width: 260px;
+      height: 260px;
+      right: -130px;
+      bottom: 80px;
+      border: 1px solid rgba(107,227,220,.34);
+    }
+
+    .context-panel::after {
+      width: 16px;
+      height: 16px;
+      right: 86px;
+      bottom: 186px;
+      background: var(--coral);
+      box-shadow: 0 0 0 7px rgba(255,255,255,.12);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #81eee7;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 8em;
+      margin-bottom: 22px;
+      font-family: ui-serif, "Songti SC", "STSong", serif;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.03;
+      letter-spacing: -.045em;
+    }
+
+    .lead {
+      max-width: 31em;
+      margin-bottom: 34px;
+      color: rgba(255,255,255,.75);
+      font-size: 1rem;
+    }
+
+    .mini-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 28px;
+    }
+
+    .fact {
+      padding: 14px 15px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .fact strong { display: block; font-size: 1.15rem; }
+    .fact span { color: rgba(255,255,255,.6); font-size: .78rem; }
+
+    .privacy-note {
+      position: relative;
+      margin-top: auto;
+      padding-left: 25px;
+      color: rgba(255,255,255,.68);
+      font-size: .82rem;
+    }
+
+    .privacy-note::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .48em;
+      width: 11px;
+      height: 8px;
+      border: 1.5px solid var(--cyan);
+      border-radius: 3px;
+    }
+
+    .privacy-note::after {
+      content: "";
+      position: absolute;
+      left: 3px;
+      top: .18em;
+      width: 5px;
+      height: 6px;
+      border: 1.5px solid var(--cyan);
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+    }
+
+    .question-panel {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: clamp(30px, 5vw, 66px);
+      background: var(--paper);
+    }
+
+    .question-status {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 12px;
+      color: var(--ink-soft);
+      font-size: .84rem;
+    }
+
+    .question-status strong { color: var(--ink); font-size: 1rem; }
+
+    .progress-track {
+      height: 7px;
+      margin-bottom: clamp(40px, 7vh, 76px);
+      overflow: hidden;
+      border-radius: 99px;
+      background: #e9edf6;
+    }
+
+    .progress-bar {
+      width: 2.777%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan-dark), var(--cyan));
+      transition: width .35s ease;
+    }
+
+    .question-stage {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 360px;
+    }
+
+    .dimension-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 14px;
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 780;
+      letter-spacing: .08em;
+    }
+
+    .dimension-kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--coral);
+    }
+
+    fieldset {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    legend {
+      width: 100%;
+      min-height: 4.4em;
+      margin-bottom: 14px;
+      color: var(--ink);
+      font-family: ui-serif, "Songti SC", "STSong", serif;
+      font-size: clamp(1.55rem, 3.1vw, 2.45rem);
+      font-weight: 680;
+      line-height: 1.38;
+      letter-spacing: -.02em;
+    }
+
+    .english-item {
+      min-height: 2.8em;
+      margin: -4px 0 24px;
+      color: var(--ink-soft);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+
+    .english-item[hidden] { display: none; }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin: 0 2px 10px;
+      color: var(--ink-soft);
+      font-size: .78rem;
+    }
+
+    .scale-labels span:nth-child(2) { text-align: center; }
+    .scale-labels span:last-child { text-align: right; }
+
+    .rating-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(44px, 1fr));
+      gap: 9px;
+    }
+
+    .rating-option { position: relative; }
+    .rating-option input { position: absolute; opacity: 0; pointer-events: none; }
+
+    .rating-option label {
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--paper-soft);
+      color: var(--ink-soft);
+      font-size: 1rem;
+      font-weight: 760;
+      cursor: pointer;
+      transition: transform .16s ease, border-color .16s ease, color .16s ease, background .16s ease, box-shadow .16s ease;
+    }
+
+    .rating-option label:hover {
+      transform: translateY(-2px);
+      border-color: #aeb9d3;
+      color: var(--ink);
+    }
+
+    .rating-option input:checked + label {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 8px 24px rgba(16,24,56,.18);
+    }
+
+    .rating-option input:focus-visible + label {
+      outline: 3px solid rgba(30,80,213,.28);
+      outline-offset: 3px;
+    }
+
+    .question-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: clamp(36px, 7vh, 70px);
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 22px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      font-weight: 760;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: transform .16s ease, background .16s ease, border-color .16s ease, opacity .16s ease;
+    }
+
+    .button:hover:not(:disabled) { transform: translateY(-1px); }
+    .button:focus-visible { outline: 3px solid rgba(30,80,213,.28); outline-offset: 3px; }
+
+    .button-primary { color: white; background: var(--ink); }
+    .button-primary:hover:not(:disabled) { background: #25315f; }
+    .button-secondary { color: var(--ink); border-color: var(--line); background: white; }
+    .button-secondary:hover:not(:disabled) { border-color: #aeb9d3; background: var(--paper-soft); }
+    .button:disabled { opacity: .35; cursor: not-allowed; }
+
+    .keyboard-hint { color: #8991aa; font-size: .74rem; text-align: center; }
+
+    .results-shell {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      padding: clamp(26px, 5vw, 60px);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-lg);
+      background: #f7f8fc;
+      box-shadow: var(--shadow);
+    }
+
+    .results-shell[hidden], .app-shell[hidden] { display: none; }
+
+    .result-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 34px;
+    }
+
+    .result-heading h2 {
+      margin-bottom: 8px;
+      font-family: ui-serif, "Songti SC", "STSong", serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -.035em;
+    }
+
+    .result-heading p { margin-bottom: 0; color: var(--ink-soft); }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, .72fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    .map-card,
+    .score-card,
+    .interpretation-card,
+    .method-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: white;
+    }
+
+    .map-card { padding: 12px; }
+    .result-image { display: block; width: 100%; height: auto; border-radius: 12px; background: #fff; }
+
+    .result-side { display: grid; gap: 16px; }
+
+    .score-card { padding: 23px; }
+    .score-label { color: var(--ink-soft); font-size: .82rem; }
+    .score-value { margin: 3px 0 8px; font-size: 2.45rem; font-weight: 820; line-height: 1; letter-spacing: -.045em; }
+    .score-track { height: 8px; overflow: hidden; border-radius: 99px; background: #e8ebf3; }
+    .score-fill { height: 100%; border-radius: inherit; background: var(--cyan-dark); }
+    .score-card:nth-child(2) .score-fill { background: var(--coral); }
+
+    .interpretation-card { padding: 24px; }
+    .quadrant-name { margin-bottom: 8px; color: var(--blue); font-size: 1.2rem; font-weight: 820; }
+    .interpretation-card p { margin-bottom: 0; color: var(--ink-soft); }
+    .boundary-note { margin-top: 14px !important; padding-top: 14px; border-top: 1px solid var(--line); font-size: .85rem; }
+
+    .result-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+
+    .method-card { margin-top: 24px; overflow: hidden; }
+
+    .method-card summary {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 12px 22px;
+      font-weight: 760;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    .method-card summary::-webkit-details-marker { display: none; }
+    .method-card summary::after { content: "+"; color: var(--blue); font-size: 1.4rem; font-weight: 500; }
+    .method-card[open] summary::after { content: "−"; }
+
+    .method-content {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      padding: 4px 22px 24px;
+      color: var(--ink-soft);
+      font-size: .9rem;
+    }
+
+    .method-content p { margin-bottom: 8px; }
+    .method-content a { color: var(--focus); text-underline-offset: 3px; }
+
+    .footer {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 20px 0 36px;
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      color: rgba(255,255,255,.56);
+      font-size: .78rem;
+    }
+
+    .footer a { color: rgba(255,255,255,.78); text-underline-offset: 3px; }
+
+    .toast {
+      position: fixed;
+      z-index: 20;
+      left: 50%;
+      bottom: 24px;
+      max-width: calc(100% - 32px);
+      padding: 11px 16px;
+      border-radius: 12px;
+      color: white;
+      background: rgba(16,24,56,.94);
+      box-shadow: 0 12px 34px rgba(0,0,0,.22);
+      transform: translate(-50%, 140%);
+      opacity: 0;
+      transition: transform .25s ease, opacity .25s ease;
+      pointer-events: none;
+    }
+
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+
+    @media (max-width: 900px) {
+      .app-shell { grid-template-columns: 1fr; }
+      .context-panel { padding: 26px 32px 24px; }
+      .context-panel::before, .context-panel::after { display: none; }
+      .context-panel .eyebrow { margin-bottom: 5px; font-size: .67rem; }
+      .context-panel h1 { max-width: 12em; margin-bottom: 8px; font-size: clamp(2rem, 7vw, 2.7rem); }
+      .context-panel .lead { max-width: 45em; margin-bottom: 14px; font-size: .9rem; }
+      .mini-facts { display: flex; max-width: 430px; margin-bottom: 0; }
+      .fact { padding: 8px 12px; }
+      .fact strong { display: inline; margin-right: 7px; font-size: .95rem; }
+      .privacy-note { margin: 14px 0 0; }
+      .question-panel { min-height: 610px; padding-top: 36px; }
+      .result-grid { grid-template-columns: 1fr; }
+      .result-side { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .interpretation-card { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 620px) {
+      .topbar { width: calc(100% - 28px); min-height: 68px; }
+      .brand span:last-child { display: none; }
+      main { padding: 8px 12px 32px; }
+      .app-shell, .results-shell { border-radius: 22px; }
+      .context-panel { padding: 24px 22px 22px; }
+      .context-panel h1 { margin-bottom: 8px; font-size: 2.15rem; }
+      .context-panel .lead { margin-bottom: 13px; }
+      .privacy-note { display: none; }
+      .question-panel { min-height: 610px; padding: 30px 20px; }
+      .progress-track { margin-bottom: 36px; }
+      .question-stage { min-height: 330px; }
+      legend { min-height: 5.6em; font-size: 1.55rem; }
+      .rating-grid { grid-template-columns: repeat(7, minmax(32px, 1fr)); gap: 4px; }
+      .rating-option label { min-height: 50px; border-radius: 12px; }
+      .scale-labels { font-size: .7rem; }
+      .keyboard-hint { display: none; }
+      .question-actions { margin-top: 42px; }
+      .button { padding: 0 17px; }
+      .results-shell { padding: 25px 16px; }
+      .result-heading { display: block; }
+      .result-heading .button { margin-top: 18px; }
+      .result-side { grid-template-columns: 1fr; }
+      .interpretation-card { grid-column: auto; }
+      .method-content { grid-template-columns: 1fr; }
+      .footer { width: calc(100% - 28px); display: block; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#questionText">跳到当前题目</a>
+
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>ECR-R · 关系坐标</span></div>
+    <label class="language-toggle" for="englishToggle">
+      <input id="englishToggle" type="checkbox" />
+      <span>同时显示英文原文</span>
+    </label>
+  </header>
+
+  <main>
+    <section class="app-shell" id="quizView" aria-label="ECR-R 问卷">
+      <aside class="context-panel">
+        <p class="eyebrow">Experiences in Close Relationships — Revised</p>
+        <h1>亲密关系体验问卷</h1>
+        <p class="lead">请按照你在亲密关系中的一般感受作答，而不只考虑眼下某一段关系。题目中的“伴侣”指恋爱或婚姻伴侣；没有“正确答案”，选择最贴近你的程度即可。</p>
+        <div class="mini-facts" aria-label="问卷信息">
+          <div class="fact"><strong>36</strong><span>个原量表条目</span></div>
+          <div class="fact"><strong>约 5–7 分钟</strong><span>7 点同意度量尺</span></div>
+        </div>
+        <p class="privacy-note">答案仅在当前浏览器页面中计算，不会由本问卷上传或保存。</p>
+      </aside>
+
+      <section class="question-panel">
+        <div class="question-status">
+          <span><strong id="questionCounter">第 1 / 36 题</strong></span>
+          <span id="sourceCounter">原量表第 1 题 · 顺序已随机</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="作答进度" aria-valuemin="1" aria-valuemax="36" aria-valuenow="1">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="question-stage">
+          <div class="dimension-kicker">按你的第一直觉选择</div>
+          <fieldset>
+            <legend id="questionText">正在载入题目…</legend>
+            <p class="english-item" id="englishText" lang="en" hidden></p>
+            <div class="scale-labels" aria-hidden="true">
+              <span>非常不同意</span><span>中立</span><span>非常同意</span>
+            </div>
+            <div class="rating-grid" id="ratingGrid"></div>
+          </fieldset>
+        </div>
+
+        <div class="question-actions">
+          <button class="button button-secondary" type="button" id="backButton">← 上一题</button>
+          <span class="keyboard-hint">也可按数字键 1–7 选择</span>
+          <button class="button button-primary" type="button" id="nextButton" disabled>下一题 →</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="results-shell" id="resultView" aria-labelledby="resultTitle" hidden>
+      <div class="result-heading">
+        <div>
+          <p class="eyebrow" style="color:#0b7e7c">你的二维关系坐标</p>
+          <h2 id="resultTitle" tabindex="-1">结果已生成</h2>
+          <p>重点看两个连续维度的位置，象限名称只是帮助理解的视觉参照。</p>
+        </div>
+        <button class="button button-secondary" type="button" id="retakeTopButton">重新作答</button>
+      </div>
+
+      <div class="result-grid">
+        <div class="map-card">
+          <img class="result-image" id="resultImage" alt="你的依恋焦虑与依恋回避四象限坐标图" />
+        </div>
+        <div class="result-side">
+          <div class="score-card">
+            <div class="score-label">依恋焦虑</div>
+            <div class="score-value" id="anxietyScore">—</div>
+            <div class="score-track" aria-hidden="true"><div class="score-fill" id="anxietyFill"></div></div>
+          </div>
+          <div class="score-card">
+            <div class="score-label">依恋回避</div>
+            <div class="score-value" id="avoidanceScore">—</div>
+            <div class="score-track" aria-hidden="true"><div class="score-fill" id="avoidanceFill"></div></div>
+          </div>
+          <div class="interpretation-card">
+            <div class="quadrant-name" id="quadrantName">—</div>
+            <p id="quadrantDescription"></p>
+            <p class="boundary-note" id="boundaryNote"></p>
+            <div class="result-actions">
+              <button class="button button-primary" type="button" id="downloadButton">下载结果图</button>
+              <button class="button button-secondary" type="button" id="retakeButton">重新作答</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="method-card">
+        <summary>计分方式、象限说明与使用边界</summary>
+        <div class="method-content">
+          <div>
+            <p><strong>自动计分：</strong>依恋焦虑取原量表第 1–18 题平均分，依恋回避取第 19–36 题平均分。反向题按“8 − 原始作答”换算，例如 2 分自动按 6 分计入。</p>
+            <p><strong>反向题：</strong>第 9、11、20、22、26、27、28、29、30、31、33、34、35、36 题。</p>
+          </div>
+          <div>
+            <p><strong>四象限：</strong>本图透明地使用 7 点量尺中点 4.00 作为视觉分界；这不是临床界值或官方“类型”诊断。原作者更建议把焦虑与回避作为连续维度理解。</p>
+            <p><strong>译文说明：</strong>中文内容为基于英文原条目的参考译本，未经独立的本土化信效度验证。正式科研、诊断或决策用途请使用适合目标人群的验证版本并遵循伦理规范。</p>
+            <p><strong>使用范围：</strong>原作者说明该量表可供非商业研究使用；商业用途需另行取得许可。</p>
+          </div>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>仅供自我了解与教育参考，不构成心理诊断或专业建议；若作答引起不适，可随时退出。</span>
+    <span>来源：<a href="https://labs.psychology.illinois.edu/~rcfraley/measures/ecrritems.htm" target="_blank" rel="noreferrer">ECR-R 原始条目与计分</a> · <a href="https://labs.psychology.illinois.edu/~rcfraley/measures/ecrr.htm" target="_blank" rel="noreferrer">Fraley FAQ</a></span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const items = [
+      { id: 1, dimension: "anxiety", reverse: false, zh: "我害怕自己会失去伴侣的爱。", en: "I'm afraid that I will lose my partner's love." },
+      { id: 2, dimension: "anxiety", reverse: false, zh: "我常常担心伴侣不愿继续和我在一起。", en: "I often worry that my partner will not want to stay with me." },
+      { id: 3, dimension: "anxiety", reverse: false, zh: "我常常担心伴侣并不真正爱我。", en: "I often worry that my partner doesn't really love me." },
+      { id: 4, dimension: "anxiety", reverse: false, zh: "我担心恋爱伴侣不会像我在乎对方那样在乎我。", en: "I worry that romantic partners won't care about me as much as I care about them." },
+      { id: 5, dimension: "anxiety", reverse: false, zh: "我常常希望伴侣对我的感情，能和我对对方的感情一样强烈。", en: "I often wish that my partner's feelings for me were as strong as my feelings for him or her." },
+      { id: 6, dimension: "anxiety", reverse: false, zh: "我常常为自己的恋爱关系担忧。", en: "I worry a lot about my relationships." },
+      { id: 7, dimension: "anxiety", reverse: false, zh: "当伴侣不在我身边时，我会担心对方可能会对别人产生兴趣。", en: "When my partner is out of sight, I worry that he or she might become interested in someone else." },
+      { id: 8, dimension: "anxiety", reverse: false, zh: "当我向恋爱伴侣表达自己的感情时，我害怕对方不会对我有同样的感情。", en: "When I show my feelings for romantic partners, I'm afraid they will not feel the same about me." },
+      { id: 9, dimension: "anxiety", reverse: true, zh: "我很少担心伴侣会离开我。", en: "I rarely worry about my partner leaving me." },
+      { id: 10, dimension: "anxiety", reverse: false, zh: "我的恋爱伴侣会让我怀疑自己。", en: "My romantic partner makes me doubt myself." },
+      { id: 11, dimension: "anxiety", reverse: true, zh: "我不常担心自己会被抛弃。", en: "I do not often worry about being abandoned." },
+      { id: 12, dimension: "anxiety", reverse: false, zh: "我觉得伴侣不愿与我达到我所希望的那种亲密程度。", en: "I find that my partner(s) don't want to get as close as I would like." },
+      { id: 13, dimension: "anxiety", reverse: false, zh: "有时，恋爱伴侣会毫无明显缘由地改变对我的感情。", en: "Sometimes romantic partners change their feelings about me for no apparent reason." },
+      { id: 14, dimension: "anxiety", reverse: false, zh: "我渴望与人非常亲密，但这种渴望有时会把别人吓跑。", en: "My desire to be very close sometimes scares people away." },
+      { id: 15, dimension: "anxiety", reverse: false, zh: "我害怕恋爱伴侣真正了解我之后，会不喜欢真实的我。", en: "I'm afraid that once a romantic partner gets to know me, he or she won't like who I really am." },
+      { id: 16, dimension: "anxiety", reverse: false, zh: "无法从伴侣那里得到我所需要的关爱和支持，会让我感到生气。", en: "It makes me mad that I don't get the affection and support I need from my partner." },
+      { id: 17, dimension: "anxiety", reverse: false, zh: "我担心自己比不上别人。", en: "I worry that I won't measure up to other people." },
+      { id: 18, dimension: "anxiety", reverse: false, zh: "似乎只有在我生气时，伴侣才会注意到我。", en: "My partner only seems to notice me when I'm angry." },
+      { id: 19, dimension: "avoidance", reverse: false, zh: "我宁愿不让伴侣知道我内心深处的感受。", en: "I prefer not to show a partner how I feel deep down." },
+      { id: 20, dimension: "avoidance", reverse: true, zh: "我能自在地与伴侣分享自己私密的想法和感受。", en: "I feel comfortable sharing my private thoughts and feelings with my partner." },
+      { id: 21, dimension: "avoidance", reverse: false, zh: "我很难让自己去依赖恋爱伴侣。", en: "I find it difficult to allow myself to depend on romantic partners." },
+      { id: 22, dimension: "avoidance", reverse: true, zh: "与恋爱伴侣亲近时，我感到非常自在。", en: "I am very comfortable being close to romantic partners." },
+      { id: 23, dimension: "avoidance", reverse: false, zh: "向恋爱伴侣敞开心扉会让我感到不自在。", en: "I don't feel comfortable opening up to romantic partners." },
+      { id: 24, dimension: "avoidance", reverse: false, zh: "我宁愿不与恋爱伴侣过于亲密。", en: "I prefer not to be too close to romantic partners." },
+      { id: 25, dimension: "avoidance", reverse: false, zh: "当恋爱伴侣想与我非常亲近时，我会感到不自在。", en: "I get uncomfortable when a romantic partner wants to be very close." },
+      { id: 26, dimension: "avoidance", reverse: true, zh: "我觉得自己比较容易与伴侣亲近。", en: "I find it relatively easy to get close to my partner." },
+      { id: 27, dimension: "avoidance", reverse: true, zh: "对我来说，与伴侣亲近并不困难。", en: "It's not difficult for me to get close to my partner." },
+      { id: 28, dimension: "avoidance", reverse: true, zh: "我通常会和伴侣讨论自己的问题和担忧。", en: "I usually discuss my problems and concerns with my partner." },
+      { id: 29, dimension: "avoidance", reverse: true, zh: "在有需要时，向恋爱伴侣寻求支持会对我有所帮助。", en: "It helps to turn to my romantic partner in times of need." },
+      { id: 30, dimension: "avoidance", reverse: true, zh: "我几乎什么都会告诉伴侣。", en: "I tell my partner just about everything." },
+      { id: 31, dimension: "avoidance", reverse: true, zh: "我会和伴侣把事情谈一谈。", en: "I talk things over with my partner." },
+      { id: 32, dimension: "avoidance", reverse: false, zh: "当伴侣与我过于亲近时，我会感到紧张不安。", en: "I am nervous when partners get too close to me." },
+      { id: 33, dimension: "avoidance", reverse: true, zh: "我能自在地依赖恋爱伴侣。", en: "I feel comfortable depending on romantic partners." },
+      { id: 34, dimension: "avoidance", reverse: true, zh: "我觉得依赖伴侣很容易。", en: "I find it easy to depend on romantic partners." },
+      { id: 35, dimension: "avoidance", reverse: true, zh: "我很容易向伴侣表达爱意。", en: "It's easy for me to be affectionate with my partner." },
+      { id: 36, dimension: "avoidance", reverse: true, zh: "我的伴侣确实理解我和我的需要。", en: "My partner really understands me and my needs." }
+    ];
+
+    const state = {
+      order: shuffle([...items]),
+      index: 0,
+      answers: new Map(),
+      showEnglish: false,
+      resultDataUrl: ""
+    };
+
+    const els = {
+      quizView: document.querySelector("#quizView"),
+      resultView: document.querySelector("#resultView"),
+      questionCounter: document.querySelector("#questionCounter"),
+      sourceCounter: document.querySelector("#sourceCounter"),
+      progressBar: document.querySelector("#progressBar"),
+      progressTrack: document.querySelector(".progress-track"),
+      questionText: document.querySelector("#questionText"),
+      englishText: document.querySelector("#englishText"),
+      ratingGrid: document.querySelector("#ratingGrid"),
+      backButton: document.querySelector("#backButton"),
+      nextButton: document.querySelector("#nextButton"),
+      englishToggle: document.querySelector("#englishToggle"),
+      resultImage: document.querySelector("#resultImage"),
+      anxietyScore: document.querySelector("#anxietyScore"),
+      avoidanceScore: document.querySelector("#avoidanceScore"),
+      anxietyFill: document.querySelector("#anxietyFill"),
+      avoidanceFill: document.querySelector("#avoidanceFill"),
+      quadrantName: document.querySelector("#quadrantName"),
+      quadrantDescription: document.querySelector("#quadrantDescription"),
+      boundaryNote: document.querySelector("#boundaryNote"),
+      downloadButton: document.querySelector("#downloadButton"),
+      retakeButton: document.querySelector("#retakeButton"),
+      retakeTopButton: document.querySelector("#retakeTopButton"),
+      toast: document.querySelector("#toast")
+    };
+
+    function shuffle(list) {
+      for (let i = list.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+      return list;
+    }
+
+    function renderQuestion({ focus = false } = {}) {
+      const item = state.order[state.index];
+      const answer = state.answers.get(item.id);
+      const humanIndex = state.index + 1;
+
+      els.questionCounter.textContent = `第 ${humanIndex} / ${items.length} 题`;
+      els.sourceCounter.textContent = `原量表第 ${item.id} 题 · 顺序已随机`;
+      els.progressBar.style.width = `${(humanIndex / items.length) * 100}%`;
+      els.progressTrack.setAttribute("aria-valuenow", String(humanIndex));
+      els.questionText.textContent = item.zh;
+      els.englishText.textContent = item.en;
+      els.englishText.hidden = !state.showEnglish;
+      els.backButton.disabled = state.index === 0;
+      els.nextButton.disabled = answer === undefined;
+      els.nextButton.textContent = state.index === items.length - 1 ? "生成结果图 →" : "下一题 →";
+
+      els.ratingGrid.innerHTML = "";
+      for (let value = 1; value <= 7; value += 1) {
+        const wrapper = document.createElement("div");
+        wrapper.className = "rating-option";
+        const input = document.createElement("input");
+        input.type = "radio";
+        input.name = `item-${item.id}`;
+        input.id = `item-${item.id}-${value}`;
+        input.value = String(value);
+        input.checked = answer === value;
+        const label = document.createElement("label");
+        label.htmlFor = input.id;
+        label.textContent = String(value);
+        label.setAttribute("aria-label", `${value} 分，${value === 1 ? "非常不同意" : value === 4 ? "中立" : value === 7 ? "非常同意" : ""}`.replace(/，$/, ""));
+        input.addEventListener("change", () => {
+          state.answers.set(item.id, value);
+          els.nextButton.disabled = false;
+          announce(`已选择 ${value} 分`);
+        });
+        wrapper.append(input, label);
+        els.ratingGrid.append(wrapper);
+      }
+
+      if (focus) els.questionText.focus?.();
+    }
+
+    function goNext() {
+      const item = state.order[state.index];
+      if (!state.answers.has(item.id)) return;
+      if (state.index < items.length - 1) {
+        state.index += 1;
+        renderQuestion();
+        document.querySelector(".question-panel").scrollIntoView({ block: "start", behavior: "smooth" });
+      } else {
+        showResults();
+      }
+    }
+
+    function goBack() {
+      if (state.index === 0) return;
+      state.index -= 1;
+      renderQuestion();
+    }
+
+    function calculateScores() {
+      const scored = items.map((item) => {
+        const raw = state.answers.get(item.id);
+        return { ...item, raw, score: item.reverse ? 8 - raw : raw };
+      });
+      const mean = (dimension) => {
+        const values = scored.filter((item) => item.dimension === dimension).map((item) => item.score);
+        return values.reduce((sum, value) => sum + value, 0) / values.length;
+      };
+      return { anxiety: mean("anxiety"), avoidance: mean("avoidance") };
+    }
+
+    function getQuadrant(anxiety, avoidance) {
+      const highAnxiety = anxiety >= 4;
+      const highAvoidance = avoidance >= 4;
+      if (!highAnxiety && !highAvoidance) {
+        return { key: "secure", name: "更接近：安全型象限", short: "安全型", description: "在这次作答中，你较少担心被拒绝或离开，也较能接受亲近、依赖与情感表达。" };
+      }
+      if (highAnxiety && !highAvoidance) {
+        return { key: "preoccupied", name: "更接近：焦虑—痴迷型象限", short: "焦虑—痴迷型", description: "在这次作答中，你较容易担心关系回应不足，同时仍倾向寻求亲近、确认与情感连接。" };
+      }
+      if (highAnxiety && highAvoidance) {
+        return { key: "fearful", name: "更接近：恐惧—回避型象限", short: "恐惧—回避型", description: "在这次作答中，你既可能担心被拒绝或离开，也可能对过度亲近、依赖或敞开心扉感到不自在。" };
+      }
+      return { key: "dismissing", name: "更接近：疏离—回避型象限", short: "疏离—回避型", description: "在这次作答中，你较少担心被抛弃，但可能更偏好情感自主、保持距离或减少依赖。" };
+    }
+
+    function showResults() {
+      if (state.answers.size !== items.length) {
+        announce("还有题目未作答");
+        return;
+      }
+      const scores = calculateScores();
+      const quadrant = getQuadrant(scores.anxiety, scores.avoidance);
+      const distanceToBoundary = Math.min(Math.abs(scores.anxiety - 4), Math.abs(scores.avoidance - 4));
+
+      els.anxietyScore.textContent = scores.anxiety.toFixed(2);
+      els.avoidanceScore.textContent = scores.avoidance.toFixed(2);
+      els.anxietyFill.style.width = `${((scores.anxiety - 1) / 6) * 100}%`;
+      els.avoidanceFill.style.width = `${((scores.avoidance - 1) / 6) * 100}%`;
+      els.quadrantName.textContent = quadrant.name;
+      els.quadrantDescription.textContent = quadrant.description;
+      els.boundaryNote.textContent = distanceToBoundary < .35
+        ? "你的位置很靠近象限分界线；轻微的作答变化就可能改变标签，请优先关注两个连续得分。"
+        : "分数越高，代表对应的依恋焦虑或回避倾向越强；这反映的是程度，不是固定人格类型。";
+
+      state.resultDataUrl = drawResultImage(scores, quadrant);
+      els.resultImage.src = state.resultDataUrl;
+      els.resultImage.alt = `四象限结果图：依恋焦虑 ${scores.anxiety.toFixed(2)}，依恋回避 ${scores.avoidance.toFixed(2)}，位置更接近${quadrant.short}象限`;
+      els.quizView.hidden = true;
+      els.resultView.hidden = false;
+      els.englishToggle.closest("label").style.visibility = "hidden";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(() => document.querySelector("#resultTitle").focus?.(), 250);
+    }
+
+    function drawResultImage(scores, quadrant) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1200;
+      canvas.height = 900;
+      const ctx = canvas.getContext("2d");
+      const plot = { x: 150, y: 116, w: 900, h: 620 };
+      const midX = plot.x + plot.w / 2;
+      const midY = plot.y + plot.h / 2;
+
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#101838";
+      ctx.font = "700 42px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillText("我的亲密关系二维坐标", 80, 70);
+      ctx.fillStyle = "#69728d";
+      ctx.font = "24px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.textAlign = "right";
+      ctx.fillText("ECR-R 中文参考版", 1120, 67);
+      ctx.textAlign = "left";
+
+      ctx.fillStyle = "#eef9f8";
+      ctx.fillRect(plot.x, midY, plot.w / 2, plot.h / 2);
+      ctx.fillStyle = "#fff6ed";
+      ctx.fillRect(midX, midY, plot.w / 2, plot.h / 2);
+      ctx.fillStyle = "#f2f0fb";
+      ctx.fillRect(plot.x, plot.y, plot.w / 2, plot.h / 2);
+      ctx.fillStyle = "#fff0f0";
+      ctx.fillRect(midX, plot.y, plot.w / 2, plot.h / 2);
+
+      ctx.strokeStyle = "#d7ddea";
+      ctx.lineWidth = 1.5;
+      for (let n = 1; n <= 7; n += 1) {
+        const px = plot.x + ((n - 1) / 6) * plot.w;
+        const py = plot.y + ((7 - n) / 6) * plot.h;
+        ctx.beginPath(); ctx.moveTo(px, plot.y); ctx.lineTo(px, plot.y + plot.h); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(plot.x, py); ctx.lineTo(plot.x + plot.w, py); ctx.stroke();
+      }
+
+      ctx.save();
+      ctx.setLineDash([14, 11]);
+      ctx.strokeStyle = "#59637e";
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(midX, plot.y); ctx.lineTo(midX, plot.y + plot.h); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(plot.x, midY); ctx.lineTo(plot.x + plot.w, midY); ctx.stroke();
+      ctx.restore();
+
+      ctx.strokeStyle = "#101838";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(plot.x, plot.y, plot.w, plot.h);
+
+      ctx.fillStyle = "#101838";
+      ctx.font = "700 28px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("焦虑—痴迷型", plot.x + plot.w * .25, plot.y + 48);
+      ctx.fillText("恐惧—回避型", plot.x + plot.w * .75, plot.y + 48);
+      ctx.fillText("安全型", plot.x + plot.w * .25, plot.y + plot.h - 30);
+      ctx.fillText("疏离—回避型", plot.x + plot.w * .75, plot.y + plot.h - 30);
+
+      ctx.font = "20px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.fillStyle = "#69728d";
+      for (let n = 1; n <= 7; n += 1) {
+        const px = plot.x + ((n - 1) / 6) * plot.w;
+        const py = plot.y + ((7 - n) / 6) * plot.h;
+        ctx.textAlign = "center";
+        ctx.fillText(String(n), px, plot.y + plot.h + 32);
+        ctx.textAlign = "right";
+        ctx.fillText(String(n), plot.x - 18, py + 7);
+      }
+
+      ctx.fillStyle = "#101838";
+      ctx.font = "700 24px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("依恋回避 →", plot.x + plot.w / 2, 805);
+      ctx.save();
+      ctx.translate(55, plot.y + plot.h / 2);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText("依恋焦虑 →", 0, 0);
+      ctx.restore();
+
+      const pointX = plot.x + ((scores.avoidance - 1) / 6) * plot.w;
+      const pointY = plot.y + ((7 - scores.anxiety) / 6) * plot.h;
+      const glow = ctx.createRadialGradient(pointX, pointY, 6, pointX, pointY, 45);
+      glow.addColorStop(0, "rgba(255,130,110,.34)");
+      glow.addColorStop(1, "rgba(255,130,110,0)");
+      ctx.fillStyle = glow;
+      ctx.beginPath(); ctx.arc(pointX, pointY, 45, 0, Math.PI * 2); ctx.fill();
+      ctx.fillStyle = "#ff826e";
+      ctx.beginPath(); ctx.arc(pointX, pointY, 16, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = "#ffffff";
+      ctx.lineWidth = 6;
+      ctx.stroke();
+
+      const label = `你在这里  ·  焦虑 ${scores.anxiety.toFixed(2)}  /  回避 ${scores.avoidance.toFixed(2)}`;
+      ctx.font = "700 22px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      const labelWidth = ctx.measureText(label).width + 36;
+      let labelX = pointX + 24;
+      if (labelX + labelWidth > 1125) labelX = pointX - labelWidth - 24;
+      let labelY = pointY - 58;
+      if (labelY < 92) labelY = pointY + 34;
+      ctx.fillStyle = "#101838";
+      roundedRect(ctx, labelX, labelY, labelWidth, 48, 12);
+      ctx.fill();
+      ctx.fillStyle = "#ffffff";
+      ctx.textAlign = "left";
+      ctx.fillText(label, labelX + 18, labelY + 32);
+
+      ctx.fillStyle = "#69728d";
+      ctx.font = "19px 'PingFang SC', 'Microsoft YaHei', sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText(`更接近「${quadrant.short}」象限 · 中点 4.00 为视觉参考线，并非诊断界值`, canvas.width / 2, 862);
+
+      return canvas.toDataURL("image/png");
+    }
+
+    function roundedRect(ctx, x, y, width, height, radius) {
+      const r = Math.min(radius, width / 2, height / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + width, y, x + width, y + height, r);
+      ctx.arcTo(x + width, y + height, x, y + height, r);
+      ctx.arcTo(x, y + height, x, y, r);
+      ctx.arcTo(x, y, x + width, y, r);
+      ctx.closePath();
+    }
+
+    function resetQuiz() {
+      state.answers.clear();
+      state.order = shuffle([...items]);
+      state.index = 0;
+      state.resultDataUrl = "";
+      els.resultView.hidden = true;
+      els.quizView.hidden = false;
+      els.englishToggle.closest("label").style.visibility = "visible";
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      announce("问卷已重置");
+    }
+
+    function requestReset() {
+      if (window.confirm("重新作答会清除本次所有答案和结果，确定继续吗？")) resetQuiz();
+    }
+
+    function registerWebMcp() {
+      const context = document.modelContext;
+      if (!context?.registerTool) return;
+      const lifecycle = new AbortController();
+      const tool = {
+        name: "complete_ecrr_questionnaire",
+        title: "完成 ECR-R 问卷",
+        description: "按 ECR-R 原始题号顺序提交恰好 36 个 1–7 的作答值，完成自动反向计分，并在页面中显示二维得分与四象限参考图。",
+        inputSchema: {
+          type: "object",
+          properties: {
+            responses: {
+              type: "array",
+              minItems: 36,
+              maxItems: 36,
+              items: { type: "integer", minimum: 1, maximum: 7 }
+            }
+          },
+          required: ["responses"],
+          additionalProperties: false
+        },
+        annotations: { readOnlyHint: false, untrustedContentHint: false },
+        execute(input) {
+          const keys = input && typeof input === "object" ? Object.keys(input) : [];
+          const valid = keys.length === 1
+            && keys[0] === "responses"
+            && Array.isArray(input.responses)
+            && input.responses.length === 36
+            && input.responses.every((value) => Number.isInteger(value) && value >= 1 && value <= 7);
+          if (!valid) throw new Error("responses 必须是按原始题号排列的 36 个整数，每个值均须在 1–7 之间。");
+
+          state.answers.clear();
+          items.forEach((item, index) => state.answers.set(item.id, input.responses[index]));
+          state.index = items.length - 1;
+          renderQuestion();
+          showResults();
+          const scores = calculateScores();
+          const quadrant = getQuadrant(scores.anxiety, scores.avoidance);
+          return {
+            anxiety: Number(scores.anxiety.toFixed(2)),
+            avoidance: Number(scores.avoidance.toFixed(2)),
+            referenceQuadrant: quadrant.short,
+            note: "四象限以量尺中点 4.00 为视觉参考，不是官方或临床诊断界值。"
+          };
+        }
+      };
+      try {
+        void Promise.resolve(context.registerTool(tool, { signal: lifecycle.signal })).catch(() => {});
+      } catch (_) {}
+    }
+
+    let toastTimer;
+    function announce(message) {
+      clearTimeout(toastTimer);
+      els.toast.textContent = message;
+      els.toast.classList.add("show");
+      toastTimer = setTimeout(() => els.toast.classList.remove("show"), 1200);
+    }
+
+    els.nextButton.addEventListener("click", goNext);
+    els.backButton.addEventListener("click", goBack);
+    els.englishToggle.addEventListener("change", (event) => {
+      state.showEnglish = event.target.checked;
+      els.englishText.hidden = !state.showEnglish;
+    });
+    els.retakeButton.addEventListener("click", requestReset);
+    els.retakeTopButton.addEventListener("click", requestReset);
+    els.downloadButton.addEventListener("click", () => {
+      if (!state.resultDataUrl) return;
+      const link = document.createElement("a");
+      link.download = "ECR-R-关系坐标结果.png";
+      link.href = state.resultDataUrl;
+      link.click();
+      announce("结果图已下载");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (els.quizView.hidden || event.metaKey || event.ctrlKey || event.altKey) return;
+      const value = Number(event.key);
+      if (value >= 1 && value <= 7) {
+        const input = els.ratingGrid.querySelector(`input[value="${value}"]`);
+        input?.click();
+      } else if (event.key === "ArrowLeft" && !els.backButton.disabled) {
+        goBack();
+      } else if ((event.key === "ArrowRight" || event.key === "Enter") && !els.nextButton.disabled) {
+        goNext();
+      }
+    });
+
+    renderQuestion();
+    registerWebMcp();
+  </script>
+</body>
+</html>
